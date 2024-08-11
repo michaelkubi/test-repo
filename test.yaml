@@ -57,3 +57,58 @@ tools:
       - name: sqlite_data
         path: /data
 
+  - name: approve_request
+    alias: approve_request
+    description: A tool to approve a request if the approver is in the admin group
+    type: python
+    content: |
+      import os
+      import sqlite3
+      import sys
+
+      APPROVER_USER_EMAIL = os.getenv('APPROVER_USER_EMAIL')
+
+      if not APPROVER_USER_EMAIL:
+          print("Missing APPROVER_USER_EMAIL environment variable")
+          sys.exit(1)
+
+      if APPROVER_USER_EMAIL not in os.getenv('APPROVING_USERS', '').split(','):
+          print(f"User {APPROVER_USER_EMAIL} is not authorized to approve this request")
+          sys.exit(1)
+
+      request = "{{.request}}"
+      user_email = "{{.user_email}}"
+      approval_action = "{{.approval_action}}"
+
+      conn = sqlite3.connect('/data/approval_requests.db')
+      c = conn.cursor()
+
+      c.execute("SELECT * FROM approvals WHERE user_email=? AND request=? AND approved='pending'", (user_email, request))
+      approval_request = c.fetchone()
+
+      if not approval_request:
+          print(f"No pending approval request found for user {user_email} and request {request}")
+          sys.exit(1)
+
+      c.execute("UPDATE approvals SET approved=? WHERE user_email=? AND request=?", (approval_action, user_email, request))
+      conn.commit()
+      conn.close()
+
+      print(f"Approval request for user {user_email} and request {request} has been {approval_action}")
+
+    args:
+      - name: request
+        description: The request being approved or rejected
+        required: true
+      - name: user_email
+        description: The email of the user making the request
+        required: true
+      - name: approval_action
+        description: Approval action (approved or rejected)
+        required: true
+    env:
+      - APPROVER_USER_EMAIL
+      - APPROVING_USERS
+    with_volumes:
+      - name: sqlite_data
+        path: /data
