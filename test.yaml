@@ -120,7 +120,7 @@ tools:
     content: |
       import time
       for i in range({{ .max_items }}):
-          print(i)
+          print(i, flush=True)
           time.sleep(1)
     args:
       - name: max_items
