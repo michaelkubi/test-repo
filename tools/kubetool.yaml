@@ -1,0 +1,6 @@
+tools:
+  - name: kubetool
+    image: bitnami/kubectl
+    description: use kubectl
+    alias: kubetool
+    content: kubectl get pods -A
