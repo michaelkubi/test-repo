@@ -1,7 +1,10 @@
 from kubiya_sdk.workflows.stateful_workflow import StatefulWorkflow
 
 # Define a simple workflow
-workflow = StatefulWorkflow("MyWorkflow")
+workflow = StatefulWorkflow(
+    "MyWorkflow",
+    "test workflow description"
+)
 
 @workflow.step("step1")
 def step1(state):
@@ -14,4 +17,4 @@ def step2(state):
 workflow.add_edge("step1", "step2")
 
 # Make sure the workflow instance is exposed
-workflow_instance = workflow
+# workflow_instance = workflow
