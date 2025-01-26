@@ -16,6 +16,10 @@ tools:
         - name: password
           valueFrom:
             secret: DIMA_DOCKERHUB_PASSWORD
-    content: python -c "print('hello from dockerhub!')"
+    content: python -c "print('hello from dockerhub, {{.name}}!')"
+    args:
+      - name: name
+        description: A name to greet from dockerhub
+        required: true
     secrets:
       - DIMA_DOCKERHUB_PASSWORD
