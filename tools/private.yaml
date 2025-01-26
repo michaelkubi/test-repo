@@ -1,0 +1,22 @@
+tools:
+  - name: checkaws
+    alias: checkaws
+    image: python:latest
+    image_provider:
+      kind: aws
+    content: python -c "print('hello from aws!')"
+  - name: checkdh
+    alias: checkdh
+    image: python:latest
+    image_provider:
+      kind: dockerhub
+      auth:
+        - name: username
+          value: mitrabeast
+        - name: password
+          valueFrom:
+            env: MY_DOCKER_PASSWORD
+    content: python -c "print('hello from dockerhub!')"
+    env:
+      - MY_DOCKER_PASSWORD
+
