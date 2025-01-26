@@ -15,8 +15,8 @@ tools:
           value: mitrabeast
         - name: password
           valueFrom:
-            env: MY_DOCKER_PASSWORD
+            secret: MY_DOCKER_PASSWORD
     content: python -c "print('hello from dockerhub!')"
-    env:
+    secrets:
       - MY_DOCKER_PASSWORD
 
