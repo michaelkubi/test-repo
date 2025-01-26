@@ -15,8 +15,7 @@ tools:
           value: mitrabeast
         - name: password
           valueFrom:
-            secret: MY_DOCKER_PASSWORD
+            secret: DIMA_DOCKERHUB_PASSWORD
     content: python -c "print('hello from dockerhub!')"
     secrets:
-      - MY_DOCKER_PASSWORD
-
+      - DIMA_DOCKERHUB_PASSWORD
