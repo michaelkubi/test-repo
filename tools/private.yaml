@@ -7,7 +7,7 @@ tools:
     content: python -c "print('hello from aws!')"
   - name: checkdh
     alias: checkdh
-    image: mitrabeast/python:myversion
+    image: docker.io/mitrabeast/python:myversion
     image_provider:
       kind: dockerhub
       auth:
