@@ -7,7 +7,7 @@ tools:
     content: python -c "print('hello from aws!')"
   - name: checkawscosta
     alias: checkaws
-    image: 564407622114.dkr.ecr.eu-west-1.amazonaws.com/action-bundler:main
+    image: 564407622114.dkr.ecr.eu-west-1.amazonaws.com/api:main
     image_provider:
       kind: aws
     content: python -c "print('hello from aws!')"
