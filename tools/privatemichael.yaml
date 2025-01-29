@@ -18,7 +18,8 @@ tools:
         - name: username
           value: dmichaelb
         - name: password
-          value_from: MICHAEL_DH_PASSWORD
+          value_from:
+            secret: MICHAEL_DH_PASSWORD
     content: echo "hello"
     args:
       - name: name
