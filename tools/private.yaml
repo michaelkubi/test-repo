@@ -29,7 +29,7 @@ tools:
       - DIMA_DOCKERHUB_PASSWORD
   - name: checkdhmichael
     alias: checkdhmichael
-    image: dmichaelb/test:tagname
+    image: dmichaelb/test:latest
     image_provider:
       kind: dockerhub
       auth:
