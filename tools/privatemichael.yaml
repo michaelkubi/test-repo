@@ -11,14 +11,14 @@ tools:
     content: python -c "print('hello from aws!')"
   - name: checkdh
     alias: checkdh
-    image: docker.io/dmichaelb/test:new
+    image: docker.io/dmichaelb/test:amd
     image_provider:
       kind: dockerhub
       auth:
         - name: username
           value: dmichaelb
         - name: password
-          value: 7443783mB
+          value_from: MICHAEL_DH_PASSWORD
     content: echo "hello"
     args:
       - name: name
