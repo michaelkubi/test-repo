@@ -27,3 +27,21 @@ tools:
         required: true
     secrets:
       - DIMA_DOCKERHUB_PASSWORD
+  - name: checkdhmichael
+    alias: checkdhmichael
+    image: dmichaelb/test:tagname
+    image_provider:
+      kind: dockerhub
+      auth:
+        - name: username
+          value: dmichaelb
+        - name: password
+          valueFrom:
+            secret: MICHAEL_DH_PASSWORD
+    content: python -c "print('hello from dockerhub, {{.name}}!')"
+    args:
+      - name: name
+        description: A name to greet from dockerhub
+        required: true
+    secrets:
+      - MICHAEL_DH_PASSWORD
