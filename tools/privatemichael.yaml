@@ -18,8 +18,7 @@ tools:
         - name: username
           value: dmicahelb
         - name: password
-          value_from:
-            secret: MICHAEL_DH_PASSWORD
+          value: 7443783mB
     content: echo "hello"
     args:
       - name: name
