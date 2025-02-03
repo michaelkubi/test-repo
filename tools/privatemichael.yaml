@@ -3,8 +3,8 @@ tools:
     alias: checkaws
     image: 564407622114.dkr.ecr.eu-west-1.amazonaws.com/action-bundler:main
     content: python -c "print('hello from aws!')"
-  - name: big
-    alias: big
+  - name: bigbig
+    alias: bigbig
     image: kubiya/tal-jfrog:latest
     content: python -c "print('hello from aws!')"
   - name: checkawscosta
