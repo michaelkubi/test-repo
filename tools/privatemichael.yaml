@@ -3,16 +3,24 @@ tools:
     alias: checkaws
     image: 564407622114.dkr.ecr.eu-west-1.amazonaws.com/action-bundler:main
     content: python -c "print('hello from aws!')"
+    
   - name: bigbig
     alias: bigbig
     image: kubiya/tal-jfrog:latest
     content: python -c "print('hello from aws!')"
+    
+  - name: big
+    alias: big
+    image: kubiya/tal-jfrog:latest
+    content: python -c "print('hello from aws!')"
+    
   - name: checkawscosta
     alias: checkaws
     image: 564407622114.dkr.ecr.eu-west-1.amazonaws.com/api:main
     image_provider:
       kind: aws
     content: python -c "print('hello from aws!')"
+    
   - name: checkdh
     alias: checkdh
     image: docker.io/dmichaelb/test:amd
